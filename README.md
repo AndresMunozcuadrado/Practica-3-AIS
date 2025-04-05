@@ -273,7 +273,7 @@ public int parse(String expression) {
 
 ```java
 @Test
-public void test4a5(){
+public void test4a6(){
     CalculatorParser parser = new CalculatorParser();
     assertEquals(parser.parse("1+1"), 2);
     assertEquals(parser.parse("2+3"), 5);
