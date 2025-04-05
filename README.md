@@ -33,10 +33,49 @@ public int parse(String expression) {
 
 **EJ1. Captura de que TODOS los test PASAN**
 
-![Pasa](capturas/Ejemplo_1_PASA.png "Pasa")
+![Pasa](Capturas/test1_PASA.png "Pasa")
 
 **EJ1. Refactorización**
-> [BORRAR]  Solo si se considera necesario
+> No es necesaria.
+
+
+
+
+### Ejemplo 2
+
+**INPUT y OUTPUT**: 1 -> "1"
+
+**EJ1. Código de test**
+```java
+@Test
+public void testParse() {
+    CalculatorParser parser = new CalculatorParser();
+    assertTrue(parser.parse("1") == 1);
+}
+```
+
+**EJ1. Mensaje del test añadido que NO PASA**
+
+```log
+java.lang.UnsupportedOperationException: Not implemented yet
+```
+
+**EJ1. Código mínimo para que el test pase**
+
+Describe brevemente el código mínimo implementado
+
+```java
+public int parse(String expression) {
+    return 1;
+}
+```
+
+**EJ1. Captura de que TODOS los test PASAN**
+
+![Pasa](Capturas/test1_PASA.png "Pasa")
+
+**EJ1. Refactorización**
+> No es necesaria.
 
 Justificar vuestra refactorización aquí.
 
