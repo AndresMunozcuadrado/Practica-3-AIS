@@ -12,8 +12,12 @@ public class CalculatorParser {
             return parse(parts[0]) + parse(parts[1]);
         }
         if (expression.contains("-")) {
-            String[] parts = expression.split("-", 2);
-            return parse(parts[0]) - parse(parts[1]);
+            int lastMinus = expression.lastIndexOf('-');
+            if (lastMinus > 0) {
+                String left = expression.substring(0, lastMinus);
+                String right = expression.substring(lastMinus + 1);
+                return parse(left) - parse(right);
+            }
         }
         return Integer.parseInt(expression.trim());
     }

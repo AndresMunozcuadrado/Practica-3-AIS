@@ -709,6 +709,69 @@ public int parse(String expression) {
 
 
 
+<br>
+
+## Ejemplo 15
+
+**INPUT y OUTPUT**: "7-2-1" -> "4"
+
+**EJ15. Código de test**
+```java
+@Test
+public void test15(){
+    CalculatorParser parser = new CalculatorParser();
+    assertEquals(parser.parse("7-2-1"), 4);
+}
+```
+
+**EJ15. Mensaje del test añadido que NO PASA**
+
+```log
+org.opentest4j.AssertionFailedError: expected: [6] but was: [4]
+```
+
+**EJ15. Código mínimo para que el test pase**
+
+Para que este test pase, primero tenemos que analizar la causa del error. Para empezar, estabamos usando un enfoque de divide y vencerás para la resolución de todos los casos, pero en la resta no nos sirve debido a que con la implementación que tenemos se van restando los números, es decir, al hacer 2+3+4, con nuestro enfoque se haría 2+(3+4), lo cual al ser una suma no afectarían los paréntesis, por lo que la suma si que era correcta, pero al enfrentarnos a la resta los paréntesis si que afectan, por ejemplo, al hacer 7-2-1, con nuestro enfoque sería 7-(2-1), lo que sería como hacer 7-1 = 6 != 4 , entonces tenemos que cambiar el enfoque de la resta con más de dos valores. Para ello vamos a hacer que para realizar las restas, se haga de izquierda a derecha, de esta manera, al hacer 7-2-1, haremos (7-2)-1 que dará 4.
+
+```java
+public int parse(String expression) {
+        expression = expression.trim();
+        if (!expression.matches("[0-9+\\-\\s]+")) {
+            throw new IllegalArgumentException("Invalid expression");
+        }
+        if (expression.contains("+")) {
+            String[] parts = expression.split("\\+", 2);
+            return parse(parts[0]) + parse(parts[1]);
+        }
+        if (expression.contains("-")) {
+            int lastMinus = expression.lastIndexOf('-');
+            if (lastMinus > 0) {
+                String left = expression.substring(0, lastMinus);
+                String right = expression.substring(lastMinus + 1);
+                return parse(left) - parse(right);
+            }
+        }
+        return Integer.parseInt(expression.trim());
+    }
+```
+
+**EJ15. Captura de que TODOS los test PASAN**
+
+![Pasa](Capturas/test15_PASA.png "Pasa")
+
+**EJ15. Refactorización**
+> No es necesaria.
+
+
+
+
+
+
+
+
+
+
 
 <br>
 
