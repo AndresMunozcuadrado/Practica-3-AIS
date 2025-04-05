@@ -12,4 +12,10 @@ public class CalculatorParserTest {
         assertEquals(parser.parse("2"), 2);
         assertEquals(parser.parse("3"), 3);
     }
+
+    @Test
+    public void test4(){
+        CalculatorParser parser = new CalculatorParser();
+        assertEquals(parser.parse("1+1"), 2);
+    }
 }
