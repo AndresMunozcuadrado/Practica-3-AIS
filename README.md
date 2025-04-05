@@ -712,7 +712,24 @@ public int parse(String expression) {
 ![Pasa](Capturas/test14_PASA.png "Pasa")
 
 **EJ14. Refactorización**
-> No es necesaria.
+> Vamos a juntar el test con el anterior para tenerlo mas ordenado.
+
+```java
+@Test
+    public void test13a14(){
+        CalculatorParser parser = new CalculatorParser();
+        assertEquals(parser.parse("5-3"), 2);
+        assertEquals(parser.parse("1-2"), -1);
+    }
+```
+
+**EJ14. Captura de que TODOS los tests PASAN tras la refactorización**
+
+![Pasa](Capturas/test13a14_PASA.png "Pasa")
+
+
+
+<br>
 
 
 
@@ -769,8 +786,21 @@ public int parse(String expression) {
 ![Pasa](Capturas/test15_PASA.png "Pasa")
 
 **EJ15. Refactorización**
-> No es necesaria.
+> Vamos a juntar el test con el anterior para tenerlo mas ordenado.
 
+```java
+@Test
+    public void test13a15(){
+        CalculatorParser parser = new CalculatorParser();
+        assertEquals(parser.parse("5-3"), 2);
+        assertEquals(parser.parse("1-2"), -1);
+        assertEquals(parser.parse("7-2-1"), 4);
+    }
+```
+
+**EJ15. Captura de que TODOS los tests PASAN tras la refactorización**
+
+![Pasa](Capturas/test13a15_PASA.png "Pasa")
 
 
 
@@ -824,7 +854,22 @@ public int parse(String expression) {
 ![Pasa](Capturas/test16_PASA.png "Pasa")
 
 **EJ16. Refactorización**
-> No es necesaria.
+> Vamos a juntar el test con el anterior para tenerlo mas ordenado.
+
+```java
+@Test
+    public void test13a16(){
+        CalculatorParser parser = new CalculatorParser();
+        assertEquals(parser.parse("5-3"), 2);
+        assertEquals(parser.parse("1-2"), -1);
+        assertEquals(parser.parse("7-2-1"), 4);
+        assertEquals(parser.parse("9-5-3-1"), 0);
+    }
+```
+
+**EJ16. Captura de que TODOS los tests PASAN tras la refactorización**
+
+![Pasa](Capturas/test13a16_PASA.png "Pasa")
 
 
 
@@ -878,7 +923,23 @@ public int parse(String expression) {
 ![Pasa](Capturas/test17_PASA.png "Pasa")
 
 **EJ17. Refactorización**
-> No es necesaria.
+> Vamos a juntar el test con el anterior para tenerlo mas ordenado.
+
+```java
+@Test
+    public void test13a17(){
+        CalculatorParser parser = new CalculatorParser();
+        assertEquals(parser.parse("5-3"), 2);
+        assertEquals(parser.parse("1-2"), -1);
+        assertEquals(parser.parse("7-2-1"), 4);
+        assertEquals(parser.parse("9-5-3-1"), 0);
+        assertEquals(parser.parse("7+1-5"), 3);
+    }
+```
+
+**EJ17. Captura de que TODOS los tests PASAN tras la refactorización**
+
+![Pasa](Capturas/test13a17_PASA.png "Pasa")
 
 
 
@@ -932,8 +993,24 @@ public int parse(String expression) {
 ![Pasa](Capturas/test18_PASA.png "Pasa")
 
 **EJ18. Refactorización**
-> No es necesaria.
+> Vamos a juntar el test con el anterior para tenerlo mas ordenado.
 
+```java
+@Test
+    public void test13a18(){
+        CalculatorParser parser = new CalculatorParser();
+        assertEquals(parser.parse("5-3"), 2);
+        assertEquals(parser.parse("1-2"), -1);
+        assertEquals(parser.parse("7-2-1"), 4);
+        assertEquals(parser.parse("9-5-3-1"), 0);
+        assertEquals(parser.parse("7+1-5"), 3);
+        assertEquals(parser.parse("9-5+4"), 8);
+    }
+```
+
+**EJ18. Captura de que TODOS los tests PASAN tras la refactorización**
+
+![Pasa](Capturas/test13a18_PASA.png "Pasa")
 
 
 
@@ -987,7 +1064,25 @@ public int parse(String expression) {
 ![Pasa](Capturas/test19_PASA.png "Pasa")
 
 **EJ19. Refactorización**
-> No es necesaria.
+> Vamos a juntar el test con el anterior para tenerlo mas ordenado.
+
+```java
+@Test
+    public void test13a19(){
+        CalculatorParser parser = new CalculatorParser();
+        assertEquals(parser.parse("5-3"), 2);
+        assertEquals(parser.parse("1-2"), -1);
+        assertEquals(parser.parse("7-2-1"), 4);
+        assertEquals(parser.parse("9-5-3-1"), 0);
+        assertEquals(parser.parse("7+1-5"), 3);
+        assertEquals(parser.parse("9-5+4"), 8);
+        assertEquals(parser.parse("9+1-6-2"), 2);
+    }
+```
+
+**EJ19. Captura de que TODOS los tests PASAN tras la refactorización**
+
+![Pasa](Capturas/test13a19_PASA.png "Pasa")
 
 
 
@@ -1041,7 +1136,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test20_PASA.png "Pasa")
 
 **EJ20. Refactorización**
-> Una vez hemos finalizado todos los ejemplos, vamos a unificar todos los test de resta en un solo test.
+> Una vez mas, vamos a unificarlo con todos los test de resta.
 
 ```java
 @Test
