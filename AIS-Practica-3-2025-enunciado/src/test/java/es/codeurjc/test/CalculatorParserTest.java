@@ -37,38 +37,15 @@ public class CalculatorParserTest {
         assertEquals("Invalid expression", aTAux("1 + A"));
     }
     @Test
-    public void test13(){
+    public void test13a20(){
         CalculatorParser parser = new CalculatorParser();
         assertEquals(parser.parse("5-3"), 2);
-    }
-    @Test
-    public void test14(){
-        CalculatorParser parser = new CalculatorParser();
         assertEquals(parser.parse("1-2"), -1);
-    }
-    @Test
-    public void test15(){
-        CalculatorParser parser = new CalculatorParser();
         assertEquals(parser.parse("7-2-1"), 4);
-    }
-    @Test
-    public void test16(){
-        CalculatorParser parser = new CalculatorParser();
         assertEquals(parser.parse("9-5-3-1"), 0);
-    }
-    @Test
-    public void test17(){
-        CalculatorParser parser = new CalculatorParser();
         assertEquals(parser.parse("7+1-5"), 3);
-    }
-    @Test
-    public void test18(){
-        CalculatorParser parser = new CalculatorParser();
         assertEquals(parser.parse("9-5+4"), 8);
-    }
-    @Test
-    public void test19(){
-        CalculatorParser parser = new CalculatorParser();
         assertEquals(parser.parse("9+1-6-2"), 2);
+        assertEquals(parser.parse("-5+9"), 4);
     }
 }

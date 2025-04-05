@@ -983,60 +983,73 @@ public int parse(String expression) {
 
 
 
-
-
 <br>
 
-## Ejemplo 1
+## Ejemplo 20
 
-**INPUT y OUTPUT**: "1" -> "1"
+**INPUT y OUTPUT**: "-5+9" -> "4"
 
-**EJ1. Código de test**
+**EJ20. Código de test**
 ```java
 @Test
-public void test4(){
+public void test20(){
     CalculatorParser parser = new CalculatorParser();
-    assertEquals(parser.parse("1+1"), 2);
+    assertEquals(parser.parse("-5+9"), 4);
 }
 ```
 
-**EJ1. Mensaje del test añadido que NO PASA**
+**EJ20. Mensaje del test añadido que NO PASA**
 
-```log
-java.lang.NumberFormatException: For input string: "1+1"
-```
+Si que pasa el test.
 
-**EJ1. Código mínimo para que el test pase**
+**EJ20. Código mínimo para que el test pase**
 
-Hemos cambaido el método para que si la cadena de entrada contenga un "+", se sumen los números.
+El test si que pasa con la implementación anterior.
 
 ```java
 public int parse(String expression) {
-    if (expression.contains("+")) {
-        String[] parts = expression.split("\\+");
-        return Integer.parseInt(parts[0].trim()) + Integer.parseInt(parts[1].trim());
+    expression = expression.trim();
+    if (!expression.matches("[0-9+\\-\\s]+")) {
+        throw new IllegalArgumentException("Invalid expression");
     }
-    return Integer.parseInt(expression);
+    if (expression.contains("+")) {
+        String[] parts = expression.split("\\+", 2);
+        return parse(parts[0]) + parse(parts[1]);
+    }
+    if (expression.contains("-")) {
+        int lastMinus = expression.lastIndexOf('-');
+        if (lastMinus > 0) {
+            String left = expression.substring(0, lastMinus);
+            String right = expression.substring(lastMinus + 1);
+            return parse(left) - parse(right);
+        }
+    }
+    return Integer.parseInt(expression.trim());
 }
 ```
 
-**EJ1. Captura de que TODOS los test PASAN**
+**EJ20. Captura de que TODOS los test PASAN**
 
-![Pasa](Capturas/test4_PASA.png "Pasa")
+![Pasa](Capturas/test20_PASA.png "Pasa")
 
-**EJ1. Refactorización**
-> No es necesaria.
-
-Justificar vuestra refactorización aquí.
+**EJ20. Refactorización**
+> Una vez hemos finalizado todos los ejemplos, vamos a unificar todos los test de resta en un solo test.
 
 ```java
-public String convert(int number){
-    return "I"; // Imaginemos que hemos refactorizado aquí
+@Test
+public void test13a20(){
+    CalculatorParser parser = new CalculatorParser();
+    assertEquals(parser.parse("5-3"), 2);
+    assertEquals(parser.parse("1-2"), -1);
+    assertEquals(parser.parse("7-2-1"), 4);
+    assertEquals(parser.parse("9-5-3-1"), 0);
+    assertEquals(parser.parse("7+1-5"), 3);
+    assertEquals(parser.parse("9-5+4"), 8);
+    assertEquals(parser.parse("9+1-6-2"), 2);
+    assertEquals(parser.parse("-5+9"), 4);
 }
 ```
-**EJ1. Captura de que TODOS los tests PASAN tras la refactorización**
-> [BORRAR]  Solo si se ha realizado una refactorización
+**EJ20. Captura de que TODOS los tests PASAN tras la refactorización**
 
-![Pasa](Capturas/Ejemplo_1_PASA.png "Pasa")
-
+![Pasa](Capturas/test13a20_PASA.png "Pasa")
 
