@@ -422,10 +422,54 @@ public int parse(String expression) {
 
 ![Pasa](Capturas/test9_PASA.png "Pasa")
 
-**EJ1. Refactorización**
+**EJ9. Refactorización**
 > No es necesaria.
 
 
+
+<br>
+
+## Ejemplo 10
+
+**INPUT y OUTPUT**: "k" -> "Invalid expression"
+
+**EJ10. Código de test**
+```java
+public void test10(){
+    CalculatorParser parser = new CalculatorParser();
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> parser.parse("k"));
+    assertEquals("Invalid expression", exception.getMessage());
+}
+```
+
+**EJ10. Mensaje del test añadido que NO PASA**
+
+El test si que pasa con la implementación anterior.
+
+**EJ10. Código mínimo para que el test pase**
+
+Es el mismo código que el anterior.
+
+```java
+public int parse(String expression) {
+    expression = expression.trim();
+    if (!expression.matches("[0-9+\\-\\s]+")) {
+        throw new IllegalArgumentException("Invalid expression");
+    }
+    if (expression.contains("+")) {
+        String[] parts = expression.split("\\+", 2);
+        return parse(parts[0]) + parse(parts[1]);
+    }
+    return Integer.parseInt(expression.trim());
+}
+```
+
+**EJ10. Captura de que TODOS los test PASAN**
+
+![Pasa](Capturas/test10_PASA.png "Pasa")
+
+**EJ10. Refactorización**
+> No es necesaria.
 
 
 
