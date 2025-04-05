@@ -113,7 +113,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test3_PASA.png "Pasa")
 
 **EJ3. Refactorización**
-Para finalizar bien estos tres primeros ejemplos, vamos a unificarlos en un mismo test que se asegure de que estos tres test funcionen. Todo esto con el objetivo de simplificar el código.
+> Para finalizar bien estos tres primeros ejemplos, vamos a unificarlos en un mismo test que se asegure de que estos tres test funcionen. Todo esto con el objetivo de simplificar el código.
 
 
 ```java
@@ -154,7 +154,7 @@ java.lang.NumberFormatException: For input string: "1+1"
 
 **EJ4. Código mínimo para que el test pase**
 
-Hemos cambaido el método para que si la cadena de entrada contenga un "+", se sumen los números.
+Hemos cambiado el método para que si la cadena de entrada contenga un "+", se sumen los números.
 
 ```java
 public int parse(String expression) {
@@ -171,20 +171,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test4_PASA.png "Pasa")
 
 **EJ4. Refactorización**
-> Podríamos usar recursividad para simplificar el código.
-
-```java
-public int parse(String expression) {
-    if (expression.contains("+")) {
-        String[] parts = expression.split("\\+");
-        return parse(parts[0]) + parse(parts[1]);
-    }
-    return Integer.parseInt(expression);
-}
-```
-**EJ4. Captura de que TODOS los tests PASAN tras la refactorización**
-
-![Pasa](Capturas/test4Refactorizado_PASA.png "Pasa")
+> No es necesaria.
 
 
 
@@ -227,9 +214,19 @@ public int parse(String expression) {
 ![Pasa](Capturas/test5_PASA.png "Pasa")
 
 **EJ5. Refactorización**
-> No es necesaria.
+> Vamos a hacer una refactorización para unificar todos los tests en relación con las sumas.
 
+```java
+@Test
+public void test4a5(){
+    CalculatorParser parser = new CalculatorParser();
+    assertEquals(parser.parse("1+1"), 2);
+    assertEquals(parser.parse("2+3"), 5);
+}
+```
+**EJ5. Captura de que TODOS los tests PASAN tras la refactorización**
 
+![Pasa](Capturas/test4a5_PASA.png "Pasa")
 
 <br>
 
@@ -254,7 +251,7 @@ org.opentest4j.AssertionFailedError: expected: [5] but was: [9]
 
 **EJ6. Código mínimo para que el test pase**
 
-Hemos cambaido el método para que si la cadena de entrada contenga varios "+", se sumen todos los números.
+Hemos cambiado el método para que si la cadena de entrada contenga varios "+", se sumen todos los números.
 
 ```java
 public int parse(String expression) {
@@ -356,7 +353,7 @@ org.opentest4j.AssertionFailedError: expected: [Invalid expression] but was: [Fo
 
 **EJ8. Código mínimo para que el test pase**
 
-Hemos cambaido el método para que al lanzar la excepción el método devuelva el mensaje de "Invalid expression" .
+Hemos cambiado el método para que al lanzar la excepción el método devuelva el mensaje de "Invalid expression" .
 
 ```java
 public int parse(String expression) {
