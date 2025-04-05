@@ -223,6 +223,52 @@ Es el mismo código que el anterior.
 
 <br>
 
+## Ejemplo 6
+
+**INPUT y OUTPUT**: "2+3+4" -> "9"
+
+**EJ6. Código de test**
+```java
+@Test
+public void test6(){
+    CalculatorParser parser = new CalculatorParser();
+    assertEquals(parser.parse("2+3+4"), 9);
+}
+```
+
+**EJ6. Mensaje del test añadido que NO PASA**
+
+```log
+org.opentest4j.AssertionFailedError: expected: [5] but was: [9]
+```
+
+**EJ6. Código mínimo para que el test pase**
+
+Hemos cambaido el método para que si la cadena de entrada contenga varios "+", se sumen todos los números.
+
+```java
+public int parse(String expression) {
+    expression = expression.trim();
+    if (expression.contains("+")) {
+        String[] parts = expression.split("\\+", 2);
+        return parse(parts[0]) + parse(parts[1]);
+    }
+    return Integer.parseInt(expression.trim());
+}
+```
+
+**EJ6. Captura de que TODOS los test PASAN**
+
+![Pasa](Capturas/test6_PASA.png "Pasa")
+
+**EJ6. Refactorización**
+> No es necesaria.
+
+
+
+
+<br>
+
 ## Ejemplo 1
 
 **INPUT y OUTPUT**: "1" -> "1"
@@ -274,3 +320,5 @@ public String convert(int number){
 > [BORRAR]  Solo si se ha realizado una refactorización
 
 ![Pasa](capturas/Ejemplo_1_PASA.png "Pasa")
+
+

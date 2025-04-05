@@ -3,11 +3,12 @@ package es.codeurjc.test;
 public class CalculatorParser {
 
     public int parse(String expression) {
+        expression = expression.trim();
         if (expression.contains("+")) {
-            String[] parts = expression.split("\\+");
+            String[] parts = expression.split("\\+", 2);
             return parse(parts[0]) + parse(parts[1]);
         }
-        return Integer.parseInt(expression);
+        return Integer.parseInt(expression.trim());
     }
 	
 }
