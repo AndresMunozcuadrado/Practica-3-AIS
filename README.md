@@ -931,6 +931,62 @@ public int parse(String expression) {
 
 <br>
 
+## Ejemplo 19
+
+**INPUT y OUTPUT**: "9+1-6-2" -> "2"
+
+**EJ19. Código de test**
+```java
+@Test
+public void test19(){
+    CalculatorParser parser = new CalculatorParser();
+    assertEquals(parser.parse("9+1-6-2"), 2);
+}
+```
+
+**EJ19. Mensaje del test añadido que NO PASA**
+
+Si que pasa el test.
+
+**EJ19. Código mínimo para que el test pase**
+
+El test si que pasa con la implementación anterior.
+
+```java
+public int parse(String expression) {
+    expression = expression.trim();
+    if (!expression.matches("[0-9+\\-\\s]+")) {
+        throw new IllegalArgumentException("Invalid expression");
+    }
+    if (expression.contains("+")) {
+        String[] parts = expression.split("\\+", 2);
+        return parse(parts[0]) + parse(parts[1]);
+    }
+    if (expression.contains("-")) {
+        int lastMinus = expression.lastIndexOf('-');
+        if (lastMinus > 0) {
+            String left = expression.substring(0, lastMinus);
+            String right = expression.substring(lastMinus + 1);
+            return parse(left) - parse(right);
+        }
+    }
+    return Integer.parseInt(expression.trim());
+}
+```
+
+**EJ19. Captura de que TODOS los test PASAN**
+
+![Pasa](Capturas/test19_PASA.png "Pasa")
+
+**EJ19. Refactorización**
+> No es necesaria.
+
+
+
+
+
+<br>
+
 ## Ejemplo 1
 
 **INPUT y OUTPUT**: "1" -> "1"

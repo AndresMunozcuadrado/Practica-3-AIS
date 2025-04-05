@@ -66,4 +66,9 @@ public class CalculatorParserTest {
         CalculatorParser parser = new CalculatorParser();
         assertEquals(parser.parse("9-5+4"), 8);
     }
+    @Test
+    public void test19(){
+        CalculatorParser parser = new CalculatorParser();
+        assertEquals(parser.parse("9+1-6-2"), 2);
+    }
 }
