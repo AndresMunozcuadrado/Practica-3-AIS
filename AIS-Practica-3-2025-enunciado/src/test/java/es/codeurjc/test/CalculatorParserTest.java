@@ -14,18 +14,11 @@ public class CalculatorParserTest {
     }
 
     @Test
-    public void test4(){
+    public void test4a7(){
         CalculatorParser parser = new CalculatorParser();
         assertEquals(parser.parse("1+1"), 2);
-    }
-    @Test
-    public void test5(){
-        CalculatorParser parser = new CalculatorParser();
         assertEquals(parser.parse("2+3"), 5);
-    }
-    @Test
-    public void test6(){
-        CalculatorParser parser = new CalculatorParser();
         assertEquals(parser.parse("2+3+4"), 9);
+        assertEquals(parser.parse("1+2+3+4"), 10);
     }
 }

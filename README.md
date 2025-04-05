@@ -266,6 +266,54 @@ public int parse(String expression) {
 
 
 
+<br>
+
+## Ejemplo 7
+
+**INPUT y OUTPUT**: "1+2+3+4" -> "10"
+
+**EJ7. Código de test**
+```java
+@Test
+public void test7(){
+    CalculatorParser parser = new CalculatorParser();
+    assertEquals(parser.parse("1+2+3+4"), 10);
+}
+```
+
+**EJ7. Mensaje del test añadido que NO PASA**
+
+El test si que pasa con la implementación anterior.
+
+**EJ7. Código mínimo para que el test pase**
+
+Es el mismo código que el anterior.
+
+**EJ7. Captura de que TODOS los test PASAN**
+
+![Pasa](Capturas/test7_PASA.png "Pasa")
+
+**EJ7. Refactorización**
+> Al igual que antes, vamos a hacer una refactorización para unificar todos los tests en relación con las sumas.
+
+```java
+@Test
+public void test4a7(){
+    CalculatorParser parser = new CalculatorParser();
+    assertEquals(parser.parse("1+1"), 2);
+    assertEquals(parser.parse("2+3"), 5);
+    assertEquals(parser.parse("2+3+4"), 9);
+    assertEquals(parser.parse("1+2+3+4"), 10);
+}
+```
+**EJ7. Captura de que TODOS los tests PASAN tras la refactorización**
+
+![Pasa](Capturas/test4a7_PASA.png "Pasa")
+
+
+
+
+
 
 <br>
 
