@@ -269,9 +269,20 @@ public int parse(String expression) {
 ![Pasa](Capturas/test6_PASA.png "Pasa")
 
 **EJ6. Refactorización**
-> No es necesaria.
+> Igual que antes, vamos a hacer una refactorización para unificar todos los tests en relación con las sumas.
 
+```java
+@Test
+public void test4a5(){
+    CalculatorParser parser = new CalculatorParser();
+    assertEquals(parser.parse("1+1"), 2);
+    assertEquals(parser.parse("2+3"), 5);
+    assertEquals(parser.parse("2+3+4"), 9);
+}
+```
+**EJ6. Captura de que TODOS los tests PASAN tras la refactorización**
 
+![Pasa](Capturas/test4a6_PASA.png "Pasa")
 
 <br>
 
