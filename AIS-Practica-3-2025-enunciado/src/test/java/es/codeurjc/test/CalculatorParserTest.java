@@ -29,4 +29,10 @@ public class CalculatorParserTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> parser.parse("A"));
         assertEquals("Invalid expression", exception.getMessage());
     }
+    @Test
+    public void test9(){
+        CalculatorParser parser = new CalculatorParser();
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> parser.parse("B"));
+        assertEquals("Invalid expression", exception.getMessage());
+    }
 }
