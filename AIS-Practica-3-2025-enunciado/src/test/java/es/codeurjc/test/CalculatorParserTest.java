@@ -36,4 +36,9 @@ public class CalculatorParserTest {
         assertEquals("Invalid expression", aTAux("HoLa"));
         assertEquals("Invalid expression", aTAux("1 + A"));
     }
+    @Test
+    public void test13(){
+        CalculatorParser parser = new CalculatorParser();
+        assertEquals(parser.parse("5-3"), 2);
+    }
 }

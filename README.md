@@ -605,6 +605,57 @@ public void test8a12(){
 
 
 
+<br>
+
+## Ejemplo 13
+
+**INPUT y OUTPUT**: "5-3" -> "2"
+
+**EJ13. Código de test**
+```java
+@Test
+public void test13(){
+    CalculatorParser parser = new CalculatorParser();
+    assertEquals(parser.parse("5-3"), 2);
+}
+```
+
+**EJ13. Mensaje del test añadido que NO PASA**
+
+```log
+java.lang.IllegalArgumentException: Invalid expression
+```
+
+**EJ13. Código mínimo para que el test pase**
+
+Para que se el test pase, tenemos que modificar el primer if, además de añadir la funcionaldad de la resta.
+
+```java
+public int parse(String expression) {
+    expression = expression.trim();
+    if (!expression.matches("[0-9+\\-\\s]+")) {
+        throw new IllegalArgumentException("Invalid expression");
+    }
+    if (expression.contains("+")) {
+        String[] parts = expression.split("\\+", 2);
+        return parse(parts[0]) + parse(parts[1]);
+    }
+    if (expression.contains("-")) {
+        String[] parts = expression.split("-", 2);
+        return parse(parts[0]) - parse(parts[1]);
+    }
+    return Integer.parseInt(expression.trim());
+}
+```
+
+**EJ13. Captura de que TODOS los test PASAN**
+
+![Pasa](Capturas/test13_PASA.png "Pasa")
+
+**EJ13. Refactorización**
+> No es necesaria.
+
+
 
 <br>
 
