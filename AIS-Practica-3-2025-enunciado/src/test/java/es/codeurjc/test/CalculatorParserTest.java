@@ -23,34 +23,17 @@ public class CalculatorParserTest {
         assertEquals(parser.parse("1+2+3+4"), 10);
     }
 
-    @Test
-    public void test8(){
+    public String aTAux(String expression){
         CalculatorParser parser = new CalculatorParser();
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> parser.parse("A"));
-        assertEquals("Invalid expression", exception.getMessage());
+        IllegalArgumentException result = assertThrows(IllegalArgumentException.class, () -> parser.parse(expression));
+        return result.getMessage();
     }
     @Test
-    public void test9(){
-        CalculatorParser parser = new CalculatorParser();
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> parser.parse("B"));
-        assertEquals("Invalid expression", exception.getMessage());
-    }
-    @Test
-    public void test10(){
-        CalculatorParser parser = new CalculatorParser();
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> parser.parse("k"));
-        assertEquals("Invalid expression", exception.getMessage());
-    }
-    @Test
-    public void test11(){
-        CalculatorParser parser = new CalculatorParser();
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> parser.parse("HoLa"));
-        assertEquals("Invalid expression", exception.getMessage());
-    }
-    @Test
-    public void test12(){
-        CalculatorParser parser = new CalculatorParser();
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> parser.parse("1 + A"));
-        assertEquals("Invalid expression", exception.getMessage());
+    public void test8a12(){
+        assertEquals("Invalid expression", aTAux("A"));
+        assertEquals("Invalid expression", aTAux("B"));
+        assertEquals("Invalid expression", aTAux("k"));
+        assertEquals("Invalid expression", aTAux("HoLa"));
+        assertEquals("Invalid expression", aTAux("1 + A"));
     }
 }
