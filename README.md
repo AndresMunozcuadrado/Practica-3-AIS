@@ -322,7 +322,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test7_PASA.png "Pasa")
 
 **EJ7. Refactorización**
-> Al igual que antes, vamos a hacer una refactorización para unificar todos los tests en relación con las sumas.
+> Una vez mas, vamos a hacer una refactorización para unificar todos los tests en relación con las sumas.
 
 ```java
 @Test
