@@ -206,6 +206,7 @@ public void test5(){
 ```
 
 **EJ5. Mensaje del test añadido que NO PASA**
+
 El test si que pasa con la implementación anterior.
 
 **EJ5. Código mínimo para que el test pase**
@@ -471,6 +472,52 @@ public int parse(String expression) {
 **EJ10. Refactorización**
 > No es necesaria.
 
+
+
+<br>
+
+## Ejemplo 11
+
+**INPUT y OUTPUT**: "HoLa" -> "Invalid expression"
+
+**EJ11. Código de test**
+```java
+@Test
+public void test11(){
+    CalculatorParser parser = new CalculatorParser();
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> parser.parse("HoLa"));
+    assertEquals("Invalid expression", exception.getMessage());
+}
+```
+
+**EJ11. Mensaje del test añadido que NO PASA**
+
+El test si que pasa con la implementación anterior.
+
+**EJ11. Código mínimo para que el test pase**
+
+Es el mismo código que el anterior.
+
+```java
+public int parse(String expression) {
+    expression = expression.trim();
+    if (!expression.matches("[0-9+\\-\\s]+")) {
+        throw new IllegalArgumentException("Invalid expression");
+    }
+    if (expression.contains("+")) {
+        String[] parts = expression.split("\\+", 2);
+        return parse(parts[0]) + parse(parts[1]);
+    }
+    return Integer.parseInt(expression.trim());
+}
+```
+
+**EJ11. Captura de que TODOS los test PASAN**
+
+![Pasa](Capturas/test11_PASA.png "Pasa")
+
+**EJ11. Refactorización**
+> No es necesaria.
 
 
 
