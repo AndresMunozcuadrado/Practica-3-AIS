@@ -1,6 +1,7 @@
 package es.codeurjc.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -20,5 +21,12 @@ public class CalculatorParserTest {
         assertEquals(parser.parse("2+3"), 5);
         assertEquals(parser.parse("2+3+4"), 9);
         assertEquals(parser.parse("1+2+3+4"), 10);
+    }
+
+    @Test
+    public void test8(){
+        CalculatorParser parser = new CalculatorParser();
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> parser.parse("A"));
+        assertEquals("Invalid expression", exception.getMessage());
     }
 }

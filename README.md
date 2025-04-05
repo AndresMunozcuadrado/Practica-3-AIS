@@ -312,6 +312,54 @@ public void test4a7(){
 
 
 
+<br>
+
+## Ejemplo 8
+
+**INPUT y OUTPUT**: "A" -> "Invalid expression"
+
+**EJ8. Código de test**
+```java
+@Test
+public void test8(){
+    CalculatorParser parser = new CalculatorParser();
+    assertThrows(IllegalArgumentException.class,() -> parser.parse("A"));
+}
+```
+
+**EJ8. Mensaje del test añadido que NO PASA**
+
+```log
+org.opentest4j.AssertionFailedError: expected: [Invalid expression] but was: [For input string: "A"]
+```
+
+**EJ8. Código mínimo para que el test pase**
+
+Hemos cambaido el método para que al lanzar la excepción el método devuelva el mensaje de "Invalid expression" .
+
+```java
+public int parse(String expression) {
+    expression = expression.trim();
+    if (!expression.matches("[0-9+\\-\\s]+")) {
+        throw new IllegalArgumentException("Invalid expression");
+    }
+    if (expression.contains("+")) {
+        String[] parts = expression.split("\\+", 2);
+        return parse(parts[0]) + parse(parts[1]);
+    }
+    return Integer.parseInt(expression.trim());
+}
+```
+
+**EJ8. Captura de que TODOS los test PASAN**
+
+![Pasa](Capturas/test8_PASA.png "Pasa")
+
+**EJ8. Refactorización**
+> No es necesaria.
+
+
+
 
 
 
