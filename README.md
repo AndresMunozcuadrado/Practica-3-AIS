@@ -361,7 +361,7 @@ Hemos cambaido el método para que al lanzar la excepción el método devuelva e
 ```java
 public int parse(String expression) {
     expression = expression.trim();
-    if (!expression.matches("[0-9+\\-\\s]+")) {
+    if (!expression.matches("[0-9+\\s]+")) {
         throw new IllegalArgumentException("Invalid expression");
     }
     if (expression.contains("+")) {
@@ -408,7 +408,7 @@ Es el mismo código que el anterior.
 ```java
 public int parse(String expression) {
     expression = expression.trim();
-    if (!expression.matches("[0-9+\\-\\s]+")) {
+    if (!expression.matches("[0-9+\\s]+")) {
         throw new IllegalArgumentException("Invalid expression");
     }
     if (expression.contains("+")) {
@@ -454,7 +454,7 @@ Es el mismo código que el anterior.
 ```java
 public int parse(String expression) {
     expression = expression.trim();
-    if (!expression.matches("[0-9+\\-\\s]+")) {
+    if (!expression.matches("[0-9+\\s]+")) {
         throw new IllegalArgumentException("Invalid expression");
     }
     if (expression.contains("+")) {
@@ -501,7 +501,7 @@ Es el mismo código que el anterior.
 ```java
 public int parse(String expression) {
     expression = expression.trim();
-    if (!expression.matches("[0-9+\\-\\s]+")) {
+    if (!expression.matches("[0-9+\\s]+")) {
         throw new IllegalArgumentException("Invalid expression");
     }
     if (expression.contains("+")) {
@@ -548,7 +548,7 @@ Es el mismo código que el anterior.
 ```java
 public int parse(String expression) {
     expression = expression.trim();
-    if (!expression.matches("[0-9+\\-\\s]+")) {
+    if (!expression.matches("[0-9+\\s]+")) {
         throw new IllegalArgumentException("Invalid expression");
     }
     if (expression.contains("+")) {
@@ -564,7 +564,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test12_PASA.png "Pasa")
 
 **EJ12. Refactorización**
-> No es necesaria.
+> Como en los casos anteriores, vamos a refactorizar para unificar todos los tests. 
 
 
 

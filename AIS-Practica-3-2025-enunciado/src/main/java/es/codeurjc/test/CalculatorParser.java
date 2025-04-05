@@ -4,7 +4,7 @@ public class CalculatorParser {
 
     public int parse(String expression) {
         expression = expression.trim();
-        if (!expression.matches("[0-9+\\-\\s]+")) {
+        if (!expression.matches("[0-9+\\s]+")) {
             throw new IllegalArgumentException("Invalid expression");
         }
         if (expression.contains("+")) {
