@@ -1,24 +1,24 @@
 # Practica-3-AIS
 
-Nombre de los alumnos: Michel Maes Bermejo e Iván Chicano Capelo
+Nombre de los alumnos: Raul Sanchez Benitez y Andres Muñoz Muñoz
 
 ### Ejemplo 1
 
-**INPUT y OUTPUT**: 1 -> "I"
+**INPUT y OUTPUT**: 1 -> "1"
 
 **EJ1. Código de test**
 ```java
 @Test
-public void testI() {
-    RomanConverter converter = new RomanConverter();
-    assertEquals("I", converter.convert(1));
+public void testParse() {
+    CalculatorParser parser = new CalculatorParser();
+    assertTrue(parser.parse("1") == 1);
 }
 ```
 
 **EJ1. Mensaje del test añadido que NO PASA**
 
 ```log
-org.opentest4j.AssertionFailedError: expected: [I] but was: []
+java.lang.UnsupportedOperationException: Not implemented yet
 ```
 
 **EJ1. Código mínimo para que el test pase**
@@ -26,8 +26,8 @@ org.opentest4j.AssertionFailedError: expected: [I] but was: []
 Describe brevemente el código mínimo implementado
 
 ```java
-public String convert(int number){
-    return "I";
+public int parse(String expression) {
+    return 1;
 }
 ```
 
