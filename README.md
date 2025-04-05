@@ -182,7 +182,7 @@ public int parse(String expression) {
     return Integer.parseInt(expression);
 }
 ```
-**EJ1. Captura de que TODOS los tests PASAN tras la refactorización**
+**EJ4. Captura de que TODOS los tests PASAN tras la refactorización**
 
 ![Pasa](Capturas/test4Refactorizado_PASA.png "Pasa")
 
@@ -192,11 +192,42 @@ public int parse(String expression) {
 
 <br>
 
-## Ejemplo 4
+## Ejemplo 5
 
-**INPUT y OUTPUT**: "1+1" -> "2"
+**INPUT y OUTPUT**: "2+3" -> "5"
 
-**EJ4. Código de test**
+**EJ5. Código de test**
+```java
+@Test
+public void test5(){
+    CalculatorParser parser = new CalculatorParser();
+    assertEquals(parser.parse("2+3"), 5);
+}
+```
+
+**EJ5. Mensaje del test añadido que NO PASA**
+El test si que pasa con la implementación anterior.
+
+**EJ5. Código mínimo para que el test pase**
+
+Es el mismo código que el anterior.
+
+**EJ5. Captura de que TODOS los test PASAN**
+
+![Pasa](Capturas/test5_PASA.png "Pasa")
+
+**EJ5. Refactorización**
+> No es necesaria.
+
+
+
+<br>
+
+## Ejemplo 1
+
+**INPUT y OUTPUT**: "1" -> "1"
+
+**EJ1. Código de test**
 ```java
 @Test
 public void test4(){
@@ -205,13 +236,13 @@ public void test4(){
 }
 ```
 
-**EJ4. Mensaje del test añadido que NO PASA**
+**EJ1. Mensaje del test añadido que NO PASA**
 
 ```log
 java.lang.NumberFormatException: For input string: "1+1"
 ```
 
-**EJ4. Código mínimo para que el test pase**
+**EJ1. Código mínimo para que el test pase**
 
 Hemos cambaido el método para que si la cadena de entrada contenga un "+", se sumen los números.
 
