@@ -657,6 +657,59 @@ public int parse(String expression) {
 
 
 
+
+<br>
+
+## Ejemplo 14
+
+**INPUT y OUTPUT**: "1-2" -> "-1"
+
+**EJ14. Código de test**
+```java
+@Test
+public void test14(){
+    CalculatorParser parser = new CalculatorParser();
+    assertEquals(parser.parse("1-2"), -1);
+}
+```
+
+**EJ14. Mensaje del test añadido que NO PASA**
+
+Si que pasa el test.
+
+**EJ14. Código mínimo para que el test pase**
+
+El test si que pasa con la implementación anterior.
+
+```java
+public int parse(String expression) {
+    expression = expression.trim();
+    if (!expression.matches("[0-9+\\-\\s]+")) {
+        throw new IllegalArgumentException("Invalid expression");
+    }
+    if (expression.contains("+")) {
+        String[] parts = expression.split("\\+", 2);
+        return parse(parts[0]) + parse(parts[1]);
+    }
+    if (expression.contains("-")) {
+        String[] parts = expression.split("-", 2);
+        return parse(parts[0]) - parse(parts[1]);
+    }
+    return Integer.parseInt(expression.trim());
+}
+```
+
+**EJ14. Captura de que TODOS los test PASAN**
+
+![Pasa](Capturas/test14_PASA.png "Pasa")
+
+**EJ14. Refactorización**
+> No es necesaria.
+
+
+
+
+
 <br>
 
 ## Ejemplo 1

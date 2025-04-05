@@ -41,4 +41,9 @@ public class CalculatorParserTest {
         CalculatorParser parser = new CalculatorParser();
         assertEquals(parser.parse("5-3"), 2);
     }
+    @Test
+    public void test14(){
+        CalculatorParser parser = new CalculatorParser();
+        assertEquals(parser.parse("1-2"), -1);
+    }
 }
