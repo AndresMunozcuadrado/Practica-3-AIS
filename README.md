@@ -75,7 +75,7 @@ public int parse(String expression) {
 
 ![Pasa](Capturas/test2_PASA.png "Pasa")
 
-**EJ1. Refactorización**
+**EJ2. Refactorización**
 > No es necesaria.
 
 
@@ -83,26 +83,24 @@ public int parse(String expression) {
 
 ## Ejemplo 3
 
-**INPUT y OUTPUT**: 2 -> "2"
+**INPUT y OUTPUT**: 3 -> "3"
 
-**EJ2. Código de test**
+**EJ3. Código de test**
 ```java
 @Test
-public void testParse2(){
+public void testParse3(){
     CalculatorParser parser = new CalculatorParser();
-    assertEquals(parser.parse("2"), 2);
+    assertEquals(parser.parse("3"), 3);
 }
 ```
 
-**EJ2. Mensaje del test añadido que NO PASA**
+**EJ3. Mensaje del test añadido que NO PASA**
 
-```log
-org.opentest4j.AssertionFailedError: expected: [1] but was: [2]
-```
+Al haber hecho el código más generico para que los dos primeros test pasen, el tercero también pasa con la implementación que ya teníamos.
 
-**EJ2. Código mínimo para que el test pase**
+**EJ3. Código mínimo para que el test pase**
 
-Ahora tenemos que cambiar el código y hacerlo más genérico para que pase los dos tests.
+Es el mismo código que en el test anterior.
 
 ```java
 public int parse(String expression) {
@@ -110,21 +108,23 @@ public int parse(String expression) {
 }
 ```
 
-**EJ2. Captura de que TODOS los test PASAN**
+**EJ3. Captura de que TODOS los test PASAN**
 
-![Pasa](Capturas/test2_PASA.png "Pasa")
+![Pasa](Capturas/test3_PASA.png "Pasa")
 
-**EJ1. Refactorización**
-> No es necesaria.
+**EJ3. Refactorización**
+> Para finalizar bien estos tres primeros ejemplos, vamos a unificarlos en un mismo test que se asegure de que estos tres test funcionen. Todo esto con el objetivo de simplificar el código.
 
-Justificar vuestra refactorización aquí.
 
 ```java
-public String convert(int number){
-    return "I"; // Imaginemos que hemos refactorizado aquí
+@Test
+public void testPrimeros3Ej(){
+    CalculatorParser parser = new CalculatorParser();
+    assertEquals(parser.parse("1"), 1);
+    assertEquals(parser.parse("2"), 2);
+    assertEquals(parser.parse("3"), 3);
 }
 ```
-**EJ1. Captura de que TODOS los tests PASAN tras la refactorización**
-> [BORRAR]  Solo si se ha realizado una refactorización
+**EJ3. Captura de que TODOS los tests PASAN tras la refactorización**
 
-![Pasa](capturas/Ejemplo_1_PASA.png "Pasa")
+![Pasa](Capturas/testPrimeros3Ej_PASA.png "Pasa")
