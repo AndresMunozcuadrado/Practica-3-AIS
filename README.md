@@ -736,24 +736,24 @@ Para que este test pase, primero tenemos que analizar la causa del error. Para e
 
 ```java
 public int parse(String expression) {
-        expression = expression.trim();
-        if (!expression.matches("[0-9+\\-\\s]+")) {
-            throw new IllegalArgumentException("Invalid expression");
-        }
-        if (expression.contains("+")) {
-            String[] parts = expression.split("\\+", 2);
-            return parse(parts[0]) + parse(parts[1]);
-        }
-        if (expression.contains("-")) {
-            int lastMinus = expression.lastIndexOf('-');
-            if (lastMinus > 0) {
-                String left = expression.substring(0, lastMinus);
-                String right = expression.substring(lastMinus + 1);
-                return parse(left) - parse(right);
-            }
-        }
-        return Integer.parseInt(expression.trim());
+    expression = expression.trim();
+    if (!expression.matches("[0-9+\\-\\s]+")) {
+        throw new IllegalArgumentException("Invalid expression");
     }
+    if (expression.contains("+")) {
+        String[] parts = expression.split("\\+", 2);
+        return parse(parts[0]) + parse(parts[1]);
+    }
+    if (expression.contains("-")) {
+        int lastMinus = expression.lastIndexOf('-');
+        if (lastMinus > 0) {
+            String left = expression.substring(0, lastMinus);
+            String right = expression.substring(lastMinus + 1);
+            return parse(left) - parse(right);
+        }
+    }
+    return Integer.parseInt(expression.trim());
+}
 ```
 
 **EJ15. Captura de que TODOS los test PASAN**
@@ -766,9 +766,165 @@ public int parse(String expression) {
 
 
 
+<br>
+
+## Ejemplo 16
+
+**INPUT y OUTPUT**: "9-5-3-1" -> "0"
+
+**EJ16. Código de test**
+```java
+@Test
+public void test16(){
+    CalculatorParser parser = new CalculatorParser();
+    assertEquals(parser.parse("9-5-3-1"), 0);
+}
+```
+
+**EJ16. Mensaje del test añadido que NO PASA**
+
+Si que pasa el test.
+
+**EJ16. Código mínimo para que el test pase**
+
+El test si que pasa con la implementación anterior.
+
+```java
+public int parse(String expression) {
+    expression = expression.trim();
+    if (!expression.matches("[0-9+\\-\\s]+")) {
+        throw new IllegalArgumentException("Invalid expression");
+    }
+    if (expression.contains("+")) {
+        String[] parts = expression.split("\\+", 2);
+        return parse(parts[0]) + parse(parts[1]);
+    }
+    if (expression.contains("-")) {
+        int lastMinus = expression.lastIndexOf('-');
+        if (lastMinus > 0) {
+            String left = expression.substring(0, lastMinus);
+            String right = expression.substring(lastMinus + 1);
+            return parse(left) - parse(right);
+        }
+    }
+    return Integer.parseInt(expression.trim());
+}
+```
+
+**EJ16. Captura de que TODOS los test PASAN**
+
+![Pasa](Capturas/test16_PASA.png "Pasa")
+
+**EJ16. Refactorización**
+> No es necesaria.
 
 
 
+<br>
+
+## Ejemplo 17
+
+**INPUT y OUTPUT**: "7+1-5" -> "3"
+
+**EJ17. Código de test**
+```java
+@Test
+public void test17(){
+    CalculatorParser parser = new CalculatorParser();
+    assertEquals(parser.parse("7+1-5"), 3);
+}
+```
+
+**EJ17. Mensaje del test añadido que NO PASA**
+
+Si que pasa el test.
+
+**EJ17. Código mínimo para que el test pase**
+
+El test si que pasa con la implementación anterior.
+
+```java
+public int parse(String expression) {
+    expression = expression.trim();
+    if (!expression.matches("[0-9+\\-\\s]+")) {
+        throw new IllegalArgumentException("Invalid expression");
+    }
+    if (expression.contains("+")) {
+        String[] parts = expression.split("\\+", 2);
+        return parse(parts[0]) + parse(parts[1]);
+    }
+    if (expression.contains("-")) {
+        int lastMinus = expression.lastIndexOf('-');
+        if (lastMinus > 0) {
+            String left = expression.substring(0, lastMinus);
+            String right = expression.substring(lastMinus + 1);
+            return parse(left) - parse(right);
+        }
+    }
+    return Integer.parseInt(expression.trim());
+}
+```
+
+**EJ17. Captura de que TODOS los test PASAN**
+
+![Pasa](Capturas/test17_PASA.png "Pasa")
+
+**EJ17. Refactorización**
+> No es necesaria.
+
+
+
+<br>
+
+## Ejemplo 18
+
+**INPUT y OUTPUT**: "7+1-5" -> "3"
+
+**EJ18. Código de test**
+```java
+@Test
+public void test18(){
+    CalculatorParser parser = new CalculatorParser();
+    assertEquals(parser.parse("9-5+4"), 8);
+}
+```
+
+**EJ18. Mensaje del test añadido que NO PASA**
+
+Si que pasa el test.
+
+**EJ18. Código mínimo para que el test pase**
+
+El test si que pasa con la implementación anterior.
+
+```java
+public int parse(String expression) {
+    expression = expression.trim();
+    if (!expression.matches("[0-9+\\-\\s]+")) {
+        throw new IllegalArgumentException("Invalid expression");
+    }
+    if (expression.contains("+")) {
+        String[] parts = expression.split("\\+", 2);
+        return parse(parts[0]) + parse(parts[1]);
+    }
+    if (expression.contains("-")) {
+        int lastMinus = expression.lastIndexOf('-');
+        if (lastMinus > 0) {
+            String left = expression.substring(0, lastMinus);
+            String right = expression.substring(lastMinus + 1);
+            return parse(left) - parse(right);
+        }
+    }
+    return Integer.parseInt(expression.trim());
+}
+```
+
+**EJ18. Captura de que TODOS los test PASAN**
+
+![Pasa](Capturas/test18_PASA.png "Pasa")
+
+**EJ18. Refactorización**
+> No es necesaria.
 
 
 

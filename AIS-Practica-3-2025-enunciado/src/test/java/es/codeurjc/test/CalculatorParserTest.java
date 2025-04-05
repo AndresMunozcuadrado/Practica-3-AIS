@@ -51,4 +51,19 @@ public class CalculatorParserTest {
         CalculatorParser parser = new CalculatorParser();
         assertEquals(parser.parse("7-2-1"), 4);
     }
+    @Test
+    public void test16(){
+        CalculatorParser parser = new CalculatorParser();
+        assertEquals(parser.parse("9-5-3-1"), 0);
+    }
+    @Test
+    public void test17(){
+        CalculatorParser parser = new CalculatorParser();
+        assertEquals(parser.parse("7+1-5"), 3);
+    }
+    @Test
+    public void test18(){
+        CalculatorParser parser = new CalculatorParser();
+        assertEquals(parser.parse("9-5+4"), 8);
+    }
 }
