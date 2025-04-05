@@ -113,7 +113,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test3_PASA.png "Pasa")
 
 **EJ3. Refactorización**
-> Para finalizar bien estos tres primeros ejemplos, vamos a unificarlos en un mismo test que se asegure de que estos tres test funcionen. Todo esto con el objetivo de simplificar el código.
+Para finalizar bien estos tres primeros ejemplos, vamos a unificarlos en un mismo test que se asegure de que estos tres test funcionen. Todo esto con el objetivo de simplificar el código.
 
 
 ```java
