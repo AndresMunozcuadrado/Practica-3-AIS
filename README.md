@@ -2,6 +2,9 @@
 
 Nombre de los alumnos: Raul Sanchez Benitez y Andres Muñoz Muñoz
 
+>[!NOTE]
+>Antes de empezar con los ejemplos, queremos aclarar que la refactorización del método parse la hemos dejado para el final, ya que los test estan pensados para probar la funcionalidad de un solo método.
+
 ## Ejemplo 1
 
 **INPUT y OUTPUT**: "1" -> "1"
@@ -1156,7 +1159,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test20_PASA.png "Pasa")
 
 **EJ20. Refactorización**
-> Una vez mas, vamos a unificarlo con todos los test de resta.
+> Una vez mas, vamos a unificarlo con todos los test de resta.Además, con la ayuda de copilot, vamos a refacturar el metodo parse que ya esta implementado entero. Hemos creado métodos auxiliares para dividir las tareas en partes más pequeñas y legibles.
 
 ```java
 @Test
@@ -1170,6 +1173,53 @@ public void test13a20(){
     assertEquals(parser.parse("9-5+4"), 8);
     assertEquals(parser.parse("9+1-6-2"), 2);
     assertEquals(parser.parse("-5+9"), 4);
+}
+```
+```java
+package es.codeurjc.test;
+
+public class CalculatorParser {
+
+    public int parse(String expression) {
+        String trimmedExpression = expression.trim();
+
+        validateExpression(trimmedExpression);
+
+        if (trimmedExpression.contains("+")) {
+            return handleAddition(trimmedExpression);
+        }
+
+        if (trimmedExpression.contains("-")) {
+            return handleSubtraction(trimmedExpression);
+        }
+
+        return parseNumber(trimmedExpression);
+    }
+
+    private void validateExpression(String expression) {
+        if (!expression.matches("[0-9+\\-\\s]+")) {
+            throw new IllegalArgumentException("Invalid expression");
+        }
+    }
+
+    private int handleAddition(String expression) {
+        String[] parts = expression.split("\\+", 2);
+        return parse(parts[0]) + parse(parts[1]);
+    }
+
+    private int handleSubtraction(String expression) {
+        int lastMinus = expression.lastIndexOf('-');
+        if (lastMinus > 0) {
+            String left = expression.substring(0, lastMinus);
+            String right = expression.substring(lastMinus + 1);
+            return parse(left) - parse(right);
+        }
+        return parseNumber(expression); 
+    }
+
+    private int parseNumber(String expression) {
+        return Integer.parseInt(expression.trim());
+    }
 }
 ```
 **EJ20. Captura de que TODOS los tests PASAN tras la refactorización**
