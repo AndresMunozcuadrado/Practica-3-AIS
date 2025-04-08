@@ -432,7 +432,24 @@ public int parse(String expression) {
 ![Pasa](Capturas/test9_PASA.png "Pasa")
 
 **EJ9. Refactorización**
-> No es necesaria.
+> Vamos a refactorizar para unificar los tests 8 y 9. Pero esta vez va a ser distinto y vamos a añadir un método auxiliar para evitar repetir líneas de código.
+
+```java
+public String aTAux(String expression){
+    CalculatorParser parser = new CalculatorParser();
+    IllegalArgumentException result = assertThrows(IllegalArgumentException.class, () -> parser.parse(expression));
+    return result.getMessage();
+}
+@Test
+public void test8a9(){
+    assertEquals("Invalid expression", aTAux("A"));
+    assertEquals("Invalid expression", aTAux("B"));
+}
+```
+**EJ9. Captura de que TODOS los tests PASAN tras la refactorización**
+
+![Pasa](Capturas/test8a9_PASA.png "Pasa")
+
 
 
 
@@ -478,7 +495,19 @@ public int parse(String expression) {
 ![Pasa](Capturas/test10_PASA.png "Pasa")
 
 **EJ10. Refactorización**
-> No es necesaria.
+> Vamos a volver a refactorizar para unificar también el test 10.
+
+```java
+@Test
+public void test8a10(){
+    assertEquals("Invalid expression", aTAux("A"));
+    assertEquals("Invalid expression", aTAux("B"));
+    assertEquals("Invalid expression", aTAux("k"));
+}
+```
+**EJ10. Captura de que TODOS los tests PASAN tras la refactorización**
+
+![Pasa](Capturas/test8a10_PASA.png "Pasa")
 
 
 
@@ -525,7 +554,20 @@ public int parse(String expression) {
 ![Pasa](Capturas/test11_PASA.png "Pasa")
 
 **EJ11. Refactorización**
-> No es necesaria.
+> Vamos a volver a refactorizar para unificar también el test 10.
+
+```java
+@Test
+    public void test8a11(){
+        assertEquals("Invalid expression", aTAux("A"));
+        assertEquals("Invalid expression", aTAux("B"));
+        assertEquals("Invalid expression", aTAux("k"));
+        assertEquals("Invalid expression", aTAux("HoLa"));
+    }
+```
+**EJ11. Captura de que TODOS los tests PASAN tras la refactorización**
+
+![Pasa](Capturas/test8a11_PASA.png "Pasa")
 
 
 
@@ -572,31 +614,9 @@ public int parse(String expression) {
 ![Pasa](Capturas/test12_PASA.png "Pasa")
 
 **EJ12. Refactorización**
-> Como en los casos anteriores, vamos a refactorizar para unificar todos los tests, pero esta vez, vamos a hacer dos refactorizaciones, una que los unifica y otra que usa un método auxiliar para simplificar el código. 
+> Como en los casos anteriores, vamos a refactorizar para unificar todos los tests. 
 
 ```java
-@Test
-public void test8a12(){
-    CalculatorParser parser = new CalculatorParser();
-    IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> parser.parse("A"));
-    assertEquals("Invalid expression", exception1.getMessage());
-    IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> parser.parse("B"));
-    assertEquals("Invalid expression", exception2.getMessage());
-    IllegalArgumentException exception3 = assertThrows(IllegalArgumentException.class, () -> parser.parse("k"));
-    assertEquals("Invalid expression", exception3.getMessage());
-    IllegalArgumentException exception4 = assertThrows(IllegalArgumentException.class, () -> parser.parse("HoLa"));
-    assertEquals("Invalid expression", exception4.getMessage());
-    IllegalArgumentException exception5 = assertThrows(IllegalArgumentException.class, () -> parser.parse("1 + A"));
-    assertEquals("Invalid expression", exception5.getMessage());
-}
-```
-Ahora que ya hemos unificado todos los tests, vamos a usar un método auxiliar para simplificar el test.
-```java
-public String aTAux(String expression){
-    CalculatorParser parser = new CalculatorParser();
-    IllegalArgumentException result = assertThrows(IllegalArgumentException.class, () -> parser.parse(expression));
-    return result.getMessage();
-}
 @Test
 public void test8a12(){
     assertEquals("Invalid expression", aTAux("A"));
