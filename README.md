@@ -1159,7 +1159,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test20_PASA.png "Pasa")
 
 **EJ20. Refactorización**
-> Una vez mas, vamos a unificarlo con todos los test de resta.Además, con la ayuda de copilot, vamos a refacturar el metodo parse que ya esta implementado entero. Hemos creado métodos auxiliares para dividir las tareas en partes más pequeñas y legibles.
+> Una vez mas, vamos a unificarlo con todos los test de resta. Además, con la ayuda de copilot, vamos a refacturar el metodo parse que ya esta implementado entero. Hemos creado métodos auxiliares para dividir las tareas en partes más pequeñas y legibles.
 
 ```java
 @Test
