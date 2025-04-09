@@ -1,9 +1,13 @@
 # Practica-3-AIS
 
-Nombre de los alumnos: Raul Sanchez Benitez y Andres Muñoz Muñoz
+Nombre de los alumnos: Raul Sanchez Benitez y Andres Muñoz Muñoz.
 
 >[!NOTE]
->Antes de empezar con los ejemplos, queremos aclarar que la refactorización del método parse la hemos dejado para el final, ya que los test estan pensados para probar la funcionalidad de un solo método.
+>Antes de empezar con los ejemplos, queremos aclarar que la refactorización del método parse la hemos dejado para el final, ya que los test están pensados para probar la funcionalidad de un solo método.
+
+## Introducción
+Este documento describe el proceso de desarrollo de la clase CalculatorParser utilizando la metodología TDD (Test-Driven Development). La implementación sigue los pasos clásicos de TDD: escribir una prueba que falle, implementar el código mínimo para que pase y refactorizar cuando sea necesario.
+
 
 ## Ejemplo 1
 
@@ -325,7 +329,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test7_PASA.png "Pasa")
 
 **EJ7. Refactorización**
-> Una vez mas, vamos a hacer una refactorización para unificar todos los tests en relación con las sumas.
+> Una vez más, vamos a hacer una refactorización para unificar todos los tests en relación con las sumas.
 
 ```java
 @Test
@@ -410,7 +414,9 @@ public void test9(){
 
 **EJ9. Mensaje del test añadido que NO PASA**
 
-El test si que pasa con la implementación anterior.
+```log
+org.opentest4j.AssertionFailedError: expected: [Invalid expression] but was: [For input string: "B"]
+```
 
 **EJ9. Código mínimo para que el test pase**
 
@@ -473,7 +479,9 @@ public void test10(){
 
 **EJ10. Mensaje del test añadido que NO PASA**
 
-El test si que pasa con la implementación anterior.
+```log
+org.opentest4j.AssertionFailedError: expected: [Invalid expression] but was: [For input string: "k"]
+```
 
 **EJ10. Código mínimo para que el test pase**
 
@@ -532,7 +540,9 @@ public void test11(){
 
 **EJ11. Mensaje del test añadido que NO PASA**
 
-El test si que pasa con la implementación anterior.
+```log
+org.opentest4j.AssertionFailedError: expected: [Invalid expression] but was: [For input string: "HoLa"]
+```
 
 **EJ11. Código mínimo para que el test pase**
 
@@ -596,12 +606,12 @@ El test si que pasa con la implementación anterior.
 
 **EJ12. Código mínimo para que el test pase**
 
-Ahora lo hemos ajustado para que solo salte la excepción cuando se reconozca algo que no sea una suma.
+Es el mismo código que el anterior.
 
 ```java
 public int parse(String expression) {
     expression = expression.trim();
-    if (!expression.matches("[0-9+\\s]+")) {
+    if (expression.matches("[a-zA-Z]+")) {
         throw new IllegalArgumentException("Invalid expression");
     }
     if (expression.contains("+")) {
@@ -617,8 +627,24 @@ public int parse(String expression) {
 ![Pasa](Capturas/test12_PASA.png "Pasa")
 
 **EJ12. Refactorización**
-> Como en los casos anteriores, vamos a refactorizar para unificar todos los tests. 
+> Como en los casos anteriores, vamos a refactorizar para unificar todos los tests. Además, esta vez vamos a ajustar el método para que sea más correcto y genérico.
 
+Aquí vamos a cambiar el método para que cualquier otra cosa que no sea un número o un + lance la excepción.
+```java
+public int parse(String expression) {
+    expression = expression.trim();
+    if (!expression.matches("[0-9+\\s]+")) {
+        throw new IllegalArgumentException("Invalid expression");
+    }
+    if (expression.contains("+")) {
+        String[] parts = expression.split("\\+", 2);
+        return parse(parts[0]) + parse(parts[1]);
+    }
+    return Integer.parseInt(expression.trim());
+}
+```
+
+Aquí unificamos los tests.
 ```java
 @Test
 public void test8a12(){
@@ -1159,7 +1185,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test20_PASA.png "Pasa")
 
 **EJ20. Refactorización**
-> Una vez mas, vamos a unificarlo con todos los test de resta. Además, con la ayuda de copilot, vamos a refactorizar el metodo parse que ya esta implementado entero. Hemos creado métodos auxiliares para dividir las tareas en partes más pequeñas y legibles.
+> Una vez más, vamos a unificarlo con todos los test de resta. Además, con la ayuda de copilot, vamos a refactorizar el metodo parse que ya está implementado entero. Hemos creado métodos auxiliares para dividir las tareas en partes más pequeñas y legibles.
 
 ```java
 @Test
