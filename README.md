@@ -1185,7 +1185,9 @@ public int parse(String expression) {
 ![Pasa](Capturas/test20_PASA.png "Pasa")
 
 **EJ20. Refactorización**
-> Una vez más, vamos a unificarlo con todos los test de resta. Además, con la ayuda de copilot, vamos a refactorizar el metodo parse que ya está implementado entero. Hemos creado métodos auxiliares para dividir las tareas en partes más pequeñas y legibles.
+> Una vez más, vamos a unificarlo con todos los test de resta. Además, con la ayuda de copilot, vamos a refactorizar el metodo parse que ya está implementado entero.
+>
+> En el método parse habian varios malos olores como método largo, código duplicado, baja cohesión y poca claridad. En la nueva versión se aplica el principio de responsabilidad única al dividir el código en métodos específicos y bien nombrados como validateExpression, handleAddition, handleSubtraction y parseNumber, mejorando la legibilidad, mantenibilidad y escalabilidad del código.
 
 ```java
 @Test
