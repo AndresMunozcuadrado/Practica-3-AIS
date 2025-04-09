@@ -732,11 +732,11 @@ public void test14(){
 
 **EJ14. Mensaje del test añadido que NO PASA**
 
-Si que pasa el test.
+El test pasa con el código anterior.
 
 **EJ14. Código mínimo para que el test pase**
 
-El test si que pasa con la implementación anterior.
+El test pasa con la implementación anterior.
 
 ```java
 public int parse(String expression) {
@@ -761,7 +761,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test14_PASA.png "Pasa")
 
 **EJ14. Refactorización**
-> Vamos a juntar el test con el anterior para tenerlo mas ordenado.
+> Vamos a juntar el test con el anterior para tenerlo más ordenado.
 
 ```java
 @Test
@@ -835,7 +835,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test15_PASA.png "Pasa")
 
 **EJ15. Refactorización**
-> Vamos a juntar el test con el anterior para tenerlo mas ordenado.
+> Vamos a juntar el test con el anterior para tenerlo más ordenado.
 
 ```java
 @Test
@@ -903,7 +903,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test16_PASA.png "Pasa")
 
 **EJ16. Refactorización**
-> Vamos a juntar el test con el anterior para tenerlo mas ordenado.
+> Vamos a juntar el test con el anterior para tenerlo más ordenado.
 
 ```java
 @Test
@@ -972,7 +972,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test17_PASA.png "Pasa")
 
 **EJ17. Refactorización**
-> Vamos a juntar el test con el anterior para tenerlo mas ordenado.
+> Vamos a juntar el test con el anterior para tenerlo más ordenado.
 
 ```java
 @Test
@@ -1042,7 +1042,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test18_PASA.png "Pasa")
 
 **EJ18. Refactorización**
-> Vamos a juntar el test con el anterior para tenerlo mas ordenado.
+> Vamos a juntar el test con el anterior para tenerlo más ordenado.
 
 ```java
 @Test
@@ -1113,7 +1113,7 @@ public int parse(String expression) {
 ![Pasa](Capturas/test19_PASA.png "Pasa")
 
 **EJ19. Refactorización**
-> Vamos a juntar el test con el anterior para tenerlo mas ordenado.
+> Vamos a juntar el test con el anterior para tenerlo más ordenado.
 
 ```java
 @Test
