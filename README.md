@@ -372,7 +372,7 @@ Hemos cambiado el método para que al lanzar la excepción el método devuelva e
 ```java
 public int parse(String expression) {
     expression = expression.trim();
-    if (!expression.matches("[0-9+\\s]+")) {
+    if (expression.matches("A")) {
         throw new IllegalArgumentException("Invalid expression");
     }
     if (expression.contains("+")) {
@@ -414,12 +414,12 @@ El test si que pasa con la implementación anterior.
 
 **EJ9. Código mínimo para que el test pase**
 
-Es el mismo código que el anterior.
+Hemos cambiado el código para que incluya todas las letras mayúsculas.
 
 ```java
 public int parse(String expression) {
     expression = expression.trim();
-    if (!expression.matches("[0-9+\\s]+")) {
+    if (expression.matches("[A-Z]")) {
         throw new IllegalArgumentException("Invalid expression");
     }
     if (expression.contains("+")) {
@@ -477,12 +477,12 @@ El test si que pasa con la implementación anterior.
 
 **EJ10. Código mínimo para que el test pase**
 
-Es el mismo código que el anterior.
+Es el mismo código que el anterior pero añadimos la letra k.
 
 ```java
 public int parse(String expression) {
     expression = expression.trim();
-    if (!expression.matches("[0-9+\\s]+")) {
+    if (expression.matches("[kA-Z]")) {
         throw new IllegalArgumentException("Invalid expression");
     }
     if (expression.contains("+")) {
@@ -536,12 +536,12 @@ El test si que pasa con la implementación anterior.
 
 **EJ11. Código mínimo para que el test pase**
 
-Es el mismo código que el anterior.
+Hemos cambiado el código para que reconozca más de una letra.
 
 ```java
 public int parse(String expression) {
     expression = expression.trim();
-    if (!expression.matches("[0-9+\\s]+")) {
+    if (expression.matches("[a-zA-Z]+")) {
         throw new IllegalArgumentException("Invalid expression");
     }
     if (expression.contains("+")) {
@@ -596,7 +596,7 @@ El test si que pasa con la implementación anterior.
 
 **EJ12. Código mínimo para que el test pase**
 
-Es el mismo código que el anterior.
+Ahora lo hemos ajustado para que solo salte la excepción cuando se reconozca algo que no sea una suma.
 
 ```java
 public int parse(String expression) {
